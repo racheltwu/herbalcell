@@ -1,0 +1,15 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}How I make my sheet music{% endblock %}
+
+{% block date %}2009-12-28{% endblock %}
+
+{% block article_content %}
+
+<p>My process for making <a href="{% url 'article' 'free-sheet-music' %}" title="Herbalcell sheets">sheet music</a> is to find a <a href="http://www.vgmusic.com/" title="Video Game Midis">midi file</a> that sounds most similar to what I want, then edit it with <a href="http://www.notation.com/DownloadComposerTrial.php" title="Notation Composer">Notation Composer</a> to fix it and/or make it work for piano. I've had to do a few sheets from scratch because the existing midi was just completely bad, or didn't exist, but doing it this way takes a very long time so I avoid it if possible. To display the labeled notes, I go to Format > Display Easy Notes.</p>
+
+<p>To save the sheet as a pdf file, you can install <a href="http://www.cutepdf.com/Products/CutePDF/writer.asp" title="CutePDF">CutePDF</a> and the required Ghostscript converter (found on the same download page). Then go to File > Print inside Notation Composer and select CutePDF as your printer, which will save it to a pdf file instead of printing it.</p>
+
+<img src="{{ STATIC_URL }}images/misc/midi-notate.jpg" title="Notation Composer Screenshot" alt="Notation Composer Screenshot" />
+
+{% endblock %}

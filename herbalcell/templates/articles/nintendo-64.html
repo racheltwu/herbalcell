@@ -1,0 +1,68 @@
+{% extends 'blog_base.html' %}
+{% load custom_tags %}
+
+{% block title %}How to play Nintendo 64 on your PC{% endblock %}
+
+{% block date %}2010-07-14{% endblock %}
+
+{% block article_content %}
+
+{% fancybox 'nintendo-64-logo.jpg' 'Nintendo 64 Logo I made in Blender' %}
+
+<h2>Install the emulator</h2>
+
+<p>Download and install the free emulator <a href="http://www.pj64-emu.com/downloads/startdown/34/" title="Project 64 Nintendo 64 Emulator">Project 64</a>.</p>
+
+<h2>Get some games</h2>
+
+<p>Games for emulators are called roms, and there are a lot of websites supplying them. Most are annoying, so to save you some sanity, I recommend <a href="http://www.emuparadise.org/Nintendo_64_ROMs/9" title="Find roms at EmuParadise">EmuParadise</a>, which has an extensive selection of roms with no-hassle downloading.</p>
+
+<p>Games I highly recommend for N64 are (in order of priority):</p>
+
+<ul>
+	<li>Legend of Zelda: Ocarina of Time</li>
+	<li>Legend of Zelda: Majora's Mask</li>
+	<li>Super Mario 64</li>
+	<li>Legend of Zelda: Ocarina of Time, Master Quest</li>
+	<li>Diddy Kong Racing</li>
+	<li>Banjo-Kazooie</li>
+</ul>
+
+<p>Once you have your games, open up Project64 and go to <strong>File > Choose Rom directory</strong>, and select the location of your roms. To play one, just double click it to open it.</p>
+
+<h2>Set up your controller</h2>
+
+<img src="{{ STATIC_URL }}images/misc/xbox-360-controller.jpg" class="float-left" alt="Xbox 360 Controller" title="Xbox 360 Controller" />
+<p>You can use any USB controller to play with this emulator. I use an <a href="http://www.amazon.com/gp/product/B003ZSN600/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B003ZSN600&amp;linkCode=as2&amp;tag=herbalcell-20" title="Xbox 360 controller">Xbox 360 controller</a> which is designed to comfortably play for long periods, and looks pretty snazzy too. You can also get a <a href="http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2FMicrosoft-882224022408-Xbox-Wireless-Controller%2Fdp%2FB000B6MLUA&amp;tag=herbalcell-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325" title="">wireless version</a> along with <a href="http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2FXbox-Wireless-Gaming-Receiver-Windows%2Fdp%2FB000HZFCT2%3Fie%3DUTF8%26s%3Dvideogames%26qid%3D1205113614%26sr%3D8-1&amp;tag=herbalcell-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325" title="">this receiver</a>.</p>
+
+<p>To set up your controller, plug it in and then open Project 64. Go to <strong>Options > Configure Controller Plugin</strong>. Select your controller from the drop-down menu and set each button by clicking the square next to it and then pressing the corresponding button on your controller.</p>
+
+<h2>Save states</h2>
+
+<p>One of the main benefits of using an emulator is being able to use save states. You can save your exact moment in the game by pressing F5, instead of having to save your game with the native in-game saving method. This makes playing the games more fun and less stressful, because you can save every few minutes and right before battles or races. If you mess up, just load the game with F7 and you will return to the exact moment you saved.</p>
+
+<p>To more quickly save and load, you can set buttons on your controller to F5 and F7. To do this, download and install <a href="http://fileforum.betanews.com/detail/Xpadder/1148671810/1" title="Xpadder Gamepad Mapping">Xpadder</a>. You'll have to run it in compatibility mode for Windows 7 or 8 (right click Properties > Compatibility). Plug in your controller and open Xpadder. Create a new layout, select the "DPad" tab and check "Enabled". Press up, down, left, right on your controller's dpad as it prompts you to. Go to the "Finish" tab and click "Close". Now there are 4 buttons you can set. Click the top one and select F7, then the bottom one and select F5. Click the little controller button in the top left and "Save as" to save the layout, and do the same for the sheet of paper icon to save your profile. Close Xpadder as it will stay open in your taskbar. Remember which button is which, because if you accidently load when you meant to save or vice versa, it can be quite frustrating!</p>
+
+<h2 id="texture-packs">Texture packs</h2>
+
+<p>Another huge benefit of using an emulator is the ability to use texture pack mods which replace the original lo-res textures with improved hi-res textures. For Ocarina of Time, there is this <a href="http://www.n64redux.com/content/ocarina-time-community-retexture-project">realistic</a> pack, or a <a href="http://www.emutalk.net/showthread.php?t=42340">cel shaded</a> pack plus <a href="http://www.emutalk.net/showthread.php?t=42340&amp;page=3#28">these menu letters</a>. For Majora's Mask, there are <a href="http://www.emutalk.net/showthread.php?t=33664">these two</a> packs, a realistic and a cel shaded. For Super Mario 64, there is <a href="http://www.emutalk.net/showthread.php?t=26270">this</a> pack. These are my favorite packs to use.</p>
+
+<img src="{{ STATIC_URL }}images/misc/retexture-example.jpg" class="float-right" alt="Texture I made for Majora's Mask" title="Texture I made for Majora's Mask" />
+<p>I recently started fixing and adding on to the realistic Majora's Mask pack, replacing quite a few textures so they don't stray too far from the original. You can find my current version <a href="{{ STATIC_URL }}mm-texture-pack-2010-07-14.zip" title="Rachel's Replacement Realistic Majora's Mask pack">here</a> (updated 2010-07-14). I hope to eventually finish it as completely as possible, as the original authors dropped it quite a while ago, and Majora's Mask is a favorite of mine.</p>
+
+<p>To use a texture pack, you will need to download <a href="http://code.google.com/p/glidehqplusglitch64/downloads/list" title="Glide 64 Plugin">Glide64 video plugin</a>. Put the file in the "Wrapper" folder into "C:\Program Files\Project64 1.6\". Put the files that are in the "Plugin" folder into "C:\Program Files\Project64 1.6\Plugins\". Open Project 64, go to <strong>Options > Settings</strong>, and select Glide 64 as your video plugin. Then go to <strong>Options > Configure Graphics Plugin</strong>, select the checkbox at the bottom that says "Show texture enhancement options", then click OK and reopen the same menu. There should now be a "Texture enhancement" tab; select it and under Hi-resolution textures where it says Format, select "Rice format" from the pull-down menu. For my Majora's Mask pack, you will also need to uncheck "Alternate CRC calculation" to make all textures load properly. Depending on the texture pack you're using, you may need to leave this checked (mostly for older packs).</p>
+
+<p>Create a folder called "hires_texture" in "C:\Program Files\Project64 1.6\Plugin\". Put your texture packs in here. The folders in this directory should all be named a certain way so the emulator recognizes them, such as "ZELDA MAJORA'S MASK". Now you can open up a rom in Project 64 and it should load the new textures! You will need to delete the "cache" folder under "C:\Program Files\Project64 1.6\Plugin" when you update a texture pack so it can reload the new textures.</p>
+
+<h2>Tips</h2>
+
+<ul>
+	<li>If the audio seems to skip when you load a rom, go to <strong>Options > Configure Audio Plugin</strong> and check "Sync game to audio".</li>
+	<li>To make the Lens of Truth work correctly in Majora's Mask, go to <strong>Options > Configure Graphics Plugin</strong> and check "Use frame buffer objects".</li>
+</ul>
+
+<h2>Funny video</h2>
+
+<p>In closing, please watch this <a href="http://youtube.com/watch?v=pFlcqWQVVuU" title="Nintendo Sixty Foooooourrrrrrrr!!!">hilarious video</a> of a really excited boy and his sister opening a Nintendo 64 on Christmas morning. I think I can remember my older brother and I having a similar reaction when we opened ours that very same morning. Too bad we weren't filming it. Hehe.</p>
+
+{% endblock %}

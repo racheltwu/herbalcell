@@ -1,0 +1,36 @@
+{% extends 'blog_base.html' %}
+{% load custom_tags %}
+
+{% block title %}Zelda wallpapers{% endblock %}
+
+{% block date %}2008-09-30{% endblock %}
+
+{% block article_content %}
+
+<p>Here are some Zelda wallpapers that I collected when doing a search for high resolution Zelda screenshots that didn't have any game UI elements showing. Enjoy!</p>
+
+{% for wallpaper_group in wallpaper_groups %}
+    <a href="{% url 'wallpaper' wallpaper_group.filename %}">{{ wallpaper_group.title }}</a><br />
+{% endfor %}
+
+{% if wallpapers %}
+    <hr />
+    <div id="wallpapers" class="group-of-items">
+        <h2 class="group-title-wrap">
+            <span class="inner-title">{{ wallpapers.0.group.title }}</span>
+            <span class="zip-link">
+                <a href="{{ STATIC_URL }}images/wallpapers/{{ wallpapers.0.group.filename }}/all.zip">zip</a>
+            </span>
+        </h2>
+        <br />
+        <br />
+        {% for wallpaper in wallpapers %}
+            {% with 'Zelda '|add:wallpaper.group.title|add:' Wallpaper' as title %}
+            {% with 'wallpapers/'|add:wallpaper.group.filename|add:'/'|add:wallpaper.filename as filename %}
+                {% fancybox filename title 'group' '' %}
+            {% endwith %}{% endwith %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% endblock %}

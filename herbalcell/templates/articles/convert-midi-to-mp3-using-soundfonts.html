@@ -1,0 +1,21 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}Converting midi to mp3 using soundfonts{% endblock %}
+
+{% block date %}2010-03-25{% endblock %}
+
+{% block article_content %}
+
+<p>I convert all my <a href="{% url 'article' 'free-sheet-music' %}" title="Rachel's piano arrangements">midi arrangements</a> into high quality mp3s using an open source program called <a href="http://www.synthfont.com/Downloads.html" title="Download SynthFont">SynthFont</a> and this amazing Steinwey <a href="http://www.geocities.jp/shansoundfont/index.html" title="Piano soundfont">piano soundfont</a>. I also use an open source VST reverb plugin called <a href="http://kunz.corrupt.ch/products/tal-reverb" title="Download TAL-Reverb">TAL-Reverb-2</a> (for some reason only the 32-bit version works with 64-bit Windows, I think because SynthFont installs as 32-bit).</p>
+
+<img src="{{ STATIC_URL }}images/misc/synthfont-1.jpg" title="Synthfont" alt="Synthfont" class="float-right" />
+
+<p>Open SynthFont and click on "Setup and Options" at the top. In the "Files and Folders" tab, change the default soundfont file to the one you want. Under the "VST Effects" tab, add the folder where the reverb plugin is located. Click ok to exit settings, and in the main "Files and Folders" tab, navigate to the folder where your midis are located. At the top, select "Files in the Folder List below" and check "Remember this choice in the future".</p>
+
+<img src="{{ STATIC_URL }}images/misc/synthfont-2.jpg" title="Synthfont" alt="Synthfont" class="float-left" />
+
+<p>Double click one of the midis to open it in the "Plug and Play" tab. Under "Output VST Effects" click the "Add Fx" dropdown and select "Tal-Reverb-2". Click the "Set default" button and make sure TAL-Reverb-2 is checked in the effect list. Click on it to access the plugin's settings. I use the default "Gentle Drum Ambience" preset for my piano albums. I also have to boost the volume to 200% (move the slider up under "Playback volume". To preview what it will sound like, click "Play to speakers" at the top.</p>
+
+<p>When ready to process all the midi files, go back to the "Files and Folders" tab and select "First to last" then click the "Play to file" button at the top.</p>
+
+{% endblock %}

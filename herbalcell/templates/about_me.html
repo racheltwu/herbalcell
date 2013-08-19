@@ -1,0 +1,50 @@
+﻿{% extends 'blog_base.html' %}
+{% load custom_tags %}
+
+{% block title %}About me!{% endblock %}
+
+{% block article_content %}
+
+<h1><a href="{% url 'about_me' %}">About me!</a></h1>
+
+{% fancybox '2012-07-20_19-23-06.jpg' 'Me and some sailboats' '' 'float-left' %}
+
+<p>Hello, I'm Rachel Bell, and this is my website. Herbalcell is actually just an anagram of my name. I liked it because I like nature &mdash; tasty herbs and living cells. My site is a place for me to share my hobbies and some articles on various topics.</p>
+
+<p>First and foremost: I love <a href="{% url 'article' 'games-i-like' %}">video games</a>. My favorites are the <em>Legend of Zelda</em> series, and point-and-click adventure games like Myst. I want to create video games almost as much as I love to play them. I've recently started work on a point-and-click game which will be part of a series using the free <a href="http://dead-code.org/home/">Wintermute</a> game engine. </p>
+
+<p>I also love to listen to my favorite video game music (particularly that composed by Koji Kondo), as well as making <a href="{% url 'article' 'free-sheet-music' %}">video game sheet music</a> for piano. I also learn to <a href="{% url 'article' 'my-piano-performances' %}">play some of it</a>, but I don't consider myself a pianist because I can't <a href="{% url 'article' 'learn-to-read-sheet-music' %}">sight-read</a> sheet music.</p>
+
+<p>Some of my favorite things are forests, cloudy skies, trains, and mysteries.</p>
+
+<p>I enjoy teaching myself <a href="{% url 'article' '3d-modeling-animation' %}">3D modeling and animation</a>. I've been using Blender, a powerful free and open source program, for a few years. I also like to work on my <a href="{% url 'article' 'nintendo-64#texture-packs' %}">high-res texture pack</a> for Majora's Mask.</p>
+
+<p>I like to <a href="{% url 'article' 'how-i-draw-digital-art' %}">draw and paint digitally</a> with my pen tablet and Adobe Photoshop or Corel Painter. I also use Photoshop to <a href="http://photorestorationbyrachel.com">restore old photographs</a>. I like looking at other people's art as well. I tend toward the dark, mysterious, eerie types that evoke strong feelings, whether it be a painting or photograph.</p>
+
+<p>I have a bachelor's degree in computer science and love to write code. Most of my experience is in web development. I designed, coded, and maintain this website. My favorite language is Python, and I like to use the <a href="{% url 'article' 'relaunch-2011' %}">Django web framework</a>. I have pretty extensive HTML and CSS experience, and a bit of Java experience as well.</p>
+
+<p>I'm an atheist, a rationalist, a scientist, a skeptic, a geek / nerd, a minimalist, a feminist, and political views that I haven't really found an appropriate label for yet.</p>
+
+<p>My intellectual heroes are Richard Dawkins, Neil deGrasse Tyson, Sam Harris, and Noam Chomsky, among others. Listening to them talk makes me want to give each of them a speechless hug.</p>
+
+<p>I'm originally from Texas; my husband and I moved to Maine in September of 2011. We like trying new things, and the change from Texas to Maine is definitely a new experience! We saw more snow in the first 2 weeks of living here than we had in our previous lifetimes. We were really eager to leave Texas for a change of pace but now we do miss it from time to time.</p>
+
+<p>I'm a big fan of Japan and Japanese culture. I like anime and Japanese films. My husband and I dream of taking trips to Japan and possibly living there for a while someday.</p>
+
+<p>I also like photography. We have a Canon Rebel XS. I put some of my best photos on <a href="http://www.flickr.com/photos/herbalcell/">flickr</a>.</p>
+
+<h2>Favorite Movies:</h2>
+<p>Clue, Haunted Honeymoon, Lord of the Rings, Home Alone, Twilight, Star Wars, Napoleon Dynamite, Train Man</p>
+
+<h2>Favorite Shows:</h2>
+<p>Parks and Recreation, The Office, Arrested Development, Frasier, King of the Hill, Futurama, Poirot, Buffy the Vampire Slayer, Veronica Mars, House, Nova Science Now, Witch Hunter Robin, Samurai Champloo</p>
+
+<h2>Favorite Music:</h2>
+<p>In short: I like music that can make me cry. It doesn't need to be sad for that &mdash; in fact I prefer music that makes me happy. It just needs to be evocative. Something that I can forget about the injustices of the world for a moment and experience something beautiful. I don't listen to music all the time or even that often, but when I do I like to make it worth my time. I also prefer to listen with my Sennheisers for the same reason.</p>
+
+<p>I have favorite songs but I don't like an artist with any kind of loyalty. Many artists release something awesome that gets them famous and then coast downward on the wave of fame. The groups that I probably like most consistently are Green Day, Radiohead, Arcade Fire, and Incubus, in that there are multiple songs from them that I like a lot. I also enjoy Animal Collective, The Postal Service, and Fleet Foxes. I use <a href="http://rateyourmusic.com/customchart">rateyourmusic.com</a> to find highly rated (not highly purchased) singles when I am in the mood for something new. I've found most of my favorite songs this way. I'm slowly building a <a href="http://www.youtube.com/playlist?list=PL3C09DF1FD6F54DA5&amp;feature=g-playlist">favorite songs list</a> on YouTube.</p>
+
+<h2>Contact me</h2>
+<p>Feel free to contact me about anything at all &mdash; <strong>herbalcell@gmail.com</strong>.</p>
+
+{% endblock %}

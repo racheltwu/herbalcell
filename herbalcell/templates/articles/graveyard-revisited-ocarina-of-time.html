@@ -1,0 +1,37 @@
+{% extends 'blog_base.html' %}
+{% load custom_tags %}
+
+{% block title %}Graveyard revisited, Ocarina of Time{% endblock %}
+
+{% block date %}2011-12-21{% endblock %}
+
+{% block article_content %}
+
+<p>Several months ago I gathered up a <a href="{% url 'article' 'zelda-wallpapers' %}" title="Zelda wallpapers">bunch of screenshots</a> of cutscenes from Zelda games to use as wallpapers. Something about the graveyard shot from Ocarina of Time really struck me. I liked the way it seemed to encapsulate many of the feelings I get from the game in a single screenshot. I was inspired &mdash; to recreate it realistically in <a href="{% url 'article' '3d-modeling-animation' %}" title="3D modeling and animation">Blender</a>.</p>
+
+<p>You can enlarge the photos below and use the left and right arrow keys to move back and forth between them to compare closely.</p>
+
+{% fancybox 'misc/ocarina-of-time-graveyard-before.jpg' 'Ocarina of Time graveyard screenshot' 'group' '' %}
+<div class="image-caption">Then</div>
+{% fancybox 'misc/ocarina-of-time-graveyard-renewed.jpg' 'Ocarina of Time graveyard modeled in Blender 3D' 'group' '' %}
+<div class="image-caption">Now</div>
+
+<p>I was hoping this would give people a good idea of what a hyper-realistic Zelda game might feel like, playing on the familiar graveyard we already know and love. Romping through as a child, disturbing gravestones, fighting Poes, digging holes with Damp&eacute;... I hope my hours of hard work sparks some interesting conversation about future Zelda games. :)</p>
+
+<p>The actual work of recreating it was quite enjoyable, and probably took me a couple months total to complete. You can check out my blend file <a href="{{ STATIC_URL }}blender/graveyard.blend" title="Ocarina of Time graveyard modeled in Blender 3D">here</a>.</p>
+
+<p>I used an emulator to dump the geometry of the graveyard to use as a basis to get everything accurate. Then I tweaked the camera f-stop and angle to get the correct camera view, using the basis screenshot as a background image for reference.</p>
+
+<p>The sky, trees, and mountains are all textures on planes. I used displacement mapping to create the cliffs and background fence posts, and the rest are all standard models with bump maps.</p>
+
+<p>Setting the grass up definitely took me the longest &mdash; partially because I didn't have a lot of experience with it yet, and also because of the significant amount of "tweak and render" repetitions I had to do to get it just right, and the rendering time sometimes took several minutes. To make the grass as realistic and "imperfect" as possible, I used a combination of 4 different particle systems: one for green growing grass, one for shorter yellow dead grass, one for longer darker green weed clumps, and one for sparse beige weed shoots. The plane itself is textured with a dirt texture which peeks through underneath. You can view the specific settings in my blend file.**</p>
+
+<p>The thing that took me the second longest was setting up the lighting to display just the right amount of cloudiness. I ended up using a combination of a low energy sun with rayshadows, and 2 spotlights of equal energy, one white and one green to give a greenish cloudy tinge to everything.</p>
+
+<p>I used <a href="http://graphics.uni-konstanz.de/~luft/ivy_generator/">this ivy generator</a> for the ivy on the sign. It works superbly well and is fun to use. Way better than trying to model ivy by hand or just using a texture.</p>
+
+<p>The finishing touch was adding a bit of fog by rendering a depth map and selectively overlaying it using GIMP. To output a simple depth map, open the Node editor window, and make sure "Use nodes" is selected. Add a Render Layer node, feed the Z output into a Map node of size 0.05, offset -10, then feed that output into a Composite output node. Make sure "Do composite" is selected under the Render options then render. Bang boom done.</p>
+
+<p>**NOTE: I used Blender 2.49b for this project and for some reason the newer versions of Blender make the grass look flat and strange.</p>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}Games I like{% endblock %}
+
+{% block head_js %}
+<script type="text/javascript">
+    $(function () {
+        $(".recommended-game > div").hide();
+        $(".game-description > h2").show();
+        $(".recommended-game > a").fancybox({'showNavArrows': false});
+    });
+</script>
+{% endblock %}
+
+{% block article_content %}
+
+<p>These are somewhat in order with most favorite at the top. I like games to challenge me to use my brain, usually by solving puzzles or mysteries. But I play games for fun, so I don't hesitate to use a walkthrough for hints if I ever start feeling frustrated. These games also connect with me by having captivating stories with deep, interesting characters. I usually prefer games that are quiet and slow-paced. I'd say my favorite genres are puzzle-adventures, but I also enjoy action-adventure and platformers; it really depends on the game. I can find enjoyment in a game I find beautifully crafted and amazing, or in a game that's just for casual fun.</p>
+
+{% for game in games_i_like %}
+    <div class="recommended-game">
+        <a href="#{{ game.filename }}" rel="group">{{ game.title }}</a><br />
+        <div><div class="game-description" id="{{ game.filename }}">
+            <h2>{{ game.title }}</h2>
+            <p class="platform">
+                Platform: <a href="{{ game.wikilink|safe }}" title="{{ game.title }} on Wikipedia"><em>{{ game.platform }}</em></a>
+            </p>
+            {% if game.amazon_link %}
+            <a href="{{ game.amazon_link|safe }}" title="Buy {{ game.title }} on Amazon">
+                <img src="{{ game.amazon_image|safe }}" class="float-right" alt="Game cover art" />
+            </a>
+            {% endif %}
+            {% for paragraph in game.description %}
+                <p>{{ paragraph|safe }}</p>
+            {% endfor %}
+            <div class="clear"></div>
+        </div></div>
+    </div>
+{% endfor %}
+
+{% endblock %}

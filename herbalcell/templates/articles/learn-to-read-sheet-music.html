@@ -1,0 +1,25 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}Learn to read sheet music{% endblock %}
+
+{% block date %}2009-02-15{% endblock %}
+
+{% block article_content %}
+
+<img src="{{ STATIC_URL }}images/misc/sheet-music.jpg" alt="Sheet Music" title="Sheet Music" class="float-right" />
+
+<p>I finally decided that I need to learn to read sheet music. I've always known the placement of the notes on the lines and spaces is EGBDF and FACE on the treble clef and GBDFA and ACEG on the base clef, but knowing that has never helped me read sheet music quickly. I've never been able to just look at a note and immediately know where it is on my piano. You need to be able to do this to play piano efficiently. It takes me far too long to learn just one song, when I could spend the time up front and learn to read sheet music, and afterwards be able to play many more songs much faster.</p>
+
+<p>At first, I made some flashcards, one for each note, displayed on sheet music, with the name of the note on the back. I went through these a few times and in a couple of hours I could pull the note name from my head within a second or two. But then I realized that even if I got super fast at knowing the note name in my head, I would still have to do another translation from note name to which key on the piano. So I'd be looking at a note, translating it into a note name, and then looking down at my piano, translating the note name into which key I needed. This is too many translations. That is like translating English into Japanese and then Spanish instead of straight to Spanish.</p>
+
+<p>Instead, I want to be able to look at a note and be able to immediately picture exactly where the key is. That way I can just look at a note and then go for it on my piano. Only one translation necessary. So to practice doing this, I wanted to find some (free) software that would basically show me a note on some sheet music and tell me to press the right key on a virtual keyboard. I finally found one that does that called <a href="http://www.supershareware.com/download/notecard.html" title="Notecard">Notecard</a>.</p>
+
+<img src="{{ STATIC_URL }}images/misc/notecard.jpg" alt="Notecard Learn Sheet Music Software Screenshot" title="Notecard Learn Sheet Music Software Screenshot" class="float-left" />
+
+<p>Download it, open it up, and select <strong>Use Piano Keys, All Notes, and Full Keyboard Range</strong>, then click the play button. Get pretty good at each level before adjusting the level up at the bottom. When you reach level 12, just keep doing it over and over until you are so fast at recognizing which note is which key that you can't even believe it. Then you can start practicing playing sheet music without the labeled notes.</p>
+
+<p>If you are a total beginner, you should read <a href="http://www.notationmachine.com/how_to_read_sheetmusic/readingmusic.htm" title="Sheet Music Introduction">this whole page</a> to get a hold on the other concepts like sharps and flats and lengths of notes.</p>
+
+<p><em>UPDATE: I use a different program called <a href="http://download.cnet.com/Note-Attack/3000-2133_4-10076897.html">Note Attack</a> where I can plug in my keyboard via USB and practice that way. It's pretty fun actually, and great practice. If you don't have a keyboard though, Notecard is great!</em></p>
+
+{% endblock %}

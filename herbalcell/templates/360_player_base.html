@@ -1,0 +1,21 @@
+{% extends 'blog_base.html' %}
+
+{% block head_css %}
+    <link type="text/css" rel="stylesheet" media="screen" href="{{ STATIC_URL }}js/360-player/360player.css" />
+{% endblock %}
+
+{% block head_js %}
+    <script type="text/javascript" src="{{ STATIC_URL }}js/360-player/soundmanager2-nodebug-jsmin.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/360-player/excanvas.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/360-player/berniecode-animator.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/360-player/360player.js"></script>
+    <script type="text/javascript">
+        soundManager.url = "{{ STATIC_URL }}js/360-player/";
+        threeSixtyPlayer.config = {
+            imageRoot: '{{ STATIC_URL }}js/360-player/',
+            loadRingColor: '#ccc',
+            playRingColor: '#000',
+            backgroundRingColor: '#eee'
+        };
+    </script>
+{% endblock %}

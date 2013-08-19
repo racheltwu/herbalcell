@@ -1,0 +1,33 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}How to embed fonts in your website{% endblock %}
+
+{% block date %}2011-05-31{% endblock %}
+
+{% block article_content %}
+
+<p>I recently got fed up with being restricted to using one of 12 websafe fonts when designing websites. I always thought embedding fonts was really complicated and didn't work very well, but apparantly I was wrong, because my experience with it was actually pretty simple and relatively problem-free. And it ended up working in all the browsers I tested it in. Honestly there's no excuse anymore to be using the old worn-out websafers.</p>
+
+<h2>1: Find a font</h2>
+
+<p>First you need to find which fonts you want to use. I recommend not using more than about 3 different fonts in one website, as too many fonts will pretty much always equal a confusing and overly complicated design. My favorite place to find free fonts is <a href="http://dafont.com">DaFont</a>, where you can enter a word or sentence that you want to preview all the fonts in. This feature allows you to look through their selection of thousands of fonts very easily.</p>
+
+<h2>2: Generate the font formats and CSS</h2>
+
+<p>You can easily generate the various font formats and CSS that you will need to make your embedded formats cross-browser compatible using <a href="http://www.fontsquirrel.com/fontface/generator">Font Squirrel's generator</a>.</p>
+
+<p>Add all the font files you will be using in your website. If your font has multiple font files for bold, italic, etc, add all of them. Only one format (such as .ttf or .otf) is necessary for each font file. If there are multiple formats for each font, just pick one.</p>
+
+<p>In the generator's Expert settings, under X-height Matching select a font (it doesn't really matter much which one) to make sure your new fonts all conform approximately to the standard web size. Under CSS options, select "Style Linking" to simplify the CSS. Also under CSS options, check "Base64 Encode" to prevent font loading lag (where the text is displayed in a different font when first loading the page, then switches to the right font after a moment). This problem can be very jarring and would probably be a deal-breaker for me if it wasn't avoidable. But luckily it is. :)</p>
+
+<p>I ran into a problem with Firefox trying to load the .eot version of the font and then failing, causing the fonts to load twice, which took noticeably longer and made the page appear to "flash". This ended up actually being IE's fault because the .eot format is IE's proprietary format, and (of course) IE doesn't conform to standards because it won't work in IE unless you <em>don't</em> include the font specification in the CSS markup. This opens up potential problems for other browsers that <em>do</em> conform to the standard, because they can't tell what format the .eot file is and end up trying to load it and failing, causing the double-loading-problem. But luckily someone found yet another IE hack that un-hacks IE's hackery, and you can easily employ it by selecting "Mo' Bulletproofer" under "CSS Formats".</p>
+
+<h2>3: Install it</h2>
+
+<p>Remove everything from your generated folder except the .css file, the .eot files, and the .svg files. Name the folder "fonts" and place it with your CSS files. In your main CSS file, add the following line at the top:</p>
+
+<p class="indent"><code>@import url("fonts/stylesheet.css");</code></p>
+
+<p>Now you can assign the <code>font-family</code> attribute to your CSS elements, the names of which you can find inside your fonts/stylesheet.css file. Assigning your custom font-families are done exactly like the websafe fonts are assigned. Simple as that!</p>
+
+{% endblock %}

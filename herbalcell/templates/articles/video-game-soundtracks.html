@@ -1,0 +1,32 @@
+{% extends '360_player_base.html' %}
+
+{% block title %}Video game soundtracks{% endblock %}
+
+{% block article_content %}
+
+<p class="no-indent">These video game soundtracks are my favorite music to listen to.</p>
+
+{% for soundtrack in soundtracks %}
+    <a href="{% url 'soundtrack' soundtrack.filename %}">{{ soundtrack.title }}</a><br />
+{% endfor %}
+
+{% if songs %}
+    <hr />
+    <div id="soundtracks" class="group-of-items">
+        <h2 class="group-title-wrap">
+            <span class="zip-link">
+                <a href="{{ STATIC_URL }}soundtracks/{{ songs.0.soundtrack.filename }}/all.zip">zip</a>
+            </span>
+            <span class="inner-title">{{ songs.0.soundtrack.title }}</span>
+        </h2>
+        <p class="clear" />
+        {% for song in songs %}
+            <div class="group-item"><div class="ui360">
+                <a href="{{ song.url }}">{{ song.title }}</a>
+            </div></div>
+        {% endfor %}
+    </div>
+    <p class="clear" />
+{% endif %}
+
+{% endblock %}

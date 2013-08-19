@@ -1,0 +1,69 @@
+{% extends '360_player_base.html' %}
+
+{% block title %}Free sheet music{% endblock %}
+
+{% block article_content %}
+
+<p>All of these sheets were made by me. You can learn how I make them <a href="{% url 'article' 'how-i-make-sheet-music' %}" title="How I make my sheet music">here</a>. I am still <a href="{% url 'article' 'learn-to-read-sheet-music' %}" title="Learn Sheet Music">learning to sight-read sheet music</a>, so I know how helpful it can be to have the notes labeled. I make a classic and labeled version of each sheet, and each sheet is rated for difficulty. There is a high quality mp3 audio version of each sheet as well; find out <a href="{% url 'article' 'convert-midi-to-mp3-using-soundfonts' %}" title="How to convert midi to mp3">how I render them from midi here</a>. There is also a midi version to edit for your own purposes.</p>
+
+<p>I've also performed a few of these arrangements, which you can find audio and video of <a href="{% url 'article' 'my-piano-performances' %}" title="Herbalcell piano performances">here</a> and learn <a href="{% url 'article' 'how-i-play-and-record-piano' %}" title="How I play and record piano">how I record them</a>. To be notified when I periodically add new sheets, you can subscribe to my <a href="{% url 'feed' %}" title="Herbalcell updates feed">updates feed</a>.</p>
+
+{% for sheet_group in sheet_groups %}
+    <a href="{% url 'sheet' sheet_group.filename %}">{{ sheet_group.title }} ({{ sheet_group.count }})</a><br />
+{% endfor %}
+
+{% if sheets %}
+    <hr />
+    <div id="sheets" class="group-of-items">
+        <h2 class="group-title-wrap">{{ sheets.0.group.title }}</h2>
+        {% for sheet in sheets %}
+            <div class="group-item">
+                <div class="inner-title"><div class="ui360">
+                    <a href="{{ sheet.url }}.mp3" title="{{ sheet.group.title }} {{ sheet.title }} Mp3">{{ sheet.title }}</a>
+                </div></div>
+                <div class="icon">
+                    <a href="{{ sheet.url }}.mid" title="{{ sheet.group.title }} {{ sheet.title }} Midi"><img src="{{ STATIC_URL }}images/site-design/midi.png" alt="Midi" /></a>
+                </div>
+                <div class="icon">
+                    <a href="{{ sheet.url }}-labels.pdf" title="{{ sheet.group.title }} {{ sheet.title }} Sheet Music Labeled"><img src="{{ STATIC_URL }}images/site-design/note-labeled.png" alt="Labeled" /></a>
+                </div>
+                <div class="icon">
+                    <a href="{{ sheet.url }}.pdf" title="{{ sheet.group.title }} {{ sheet.title }} Sheet Music"><img src="{{ STATIC_URL }}images/site-design/note-classic.png" alt="Classic" /></a>
+                </div>
+                <div class="icon">
+                    <img src="{{ STATIC_URL }}images/site-design/rating-{{ sheet.get_rating_display }}.png" title="{{ sheet.get_rating_display }}" alt="{{ sheet.get_rating_display }}" />
+                </div>
+                <div class="clear"></div>
+            </div>
+        {% endfor %}
+        {% if sheets.0.group.count > 1 %}
+			<div class="group-item zip-entry">
+                <div class="inner-title">
+                    <a href="{{ sheets.0.group.url }}/mp3s.zip" title="{{ sheet_group.title }} Mp3 Zip">
+                        <img src="{{ STATIC_URL }}js/360-player/360-button-play.png" alt="Play Mp3" />
+                    </a>
+                </div>
+                <div class="inner-title"><strong>Zip Archives</strong></div>
+                <div class="icon">
+                    <a href="{{ sheets.0.group.url }}/midis.zip" title="{{ sheet_group.title }} Midi Zip">
+                        <img src="{{ STATIC_URL }}images/site-design/midi.png" alt="Midi" />
+                    </a>
+                </div>
+                <div class="icon">
+                    <a href="{{ sheets.0.group.url }}/sheets-labeled.zip" title="{{ sheet_group.title }} Labeled Sheets Zip">
+                        <img src="{{ STATIC_URL }}images/site-design/note-labeled.png" alt="Labeled" />
+                    </a>
+                </div>
+                <div class="icon">
+                    <a href="{{ sheets.0.group.url }}/sheets-classic.zip" title="{{ sheet_group.title }} Classic Sheets Zip">
+                        <img src="{{ STATIC_URL }}images/site-design/note-classic.png" alt="Classic" />
+                    </a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        {% endif %}
+    </div>
+    <div class="clear"></div>
+{% endif %}
+
+{% endblock %}

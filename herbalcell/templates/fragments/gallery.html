@@ -1,0 +1,7 @@
+{% load custom_tags %}
+
+<div class="gallery">
+    {% for filename in images %}
+        {% fancybox filename '' gallery '' %}
+    {% endfor %}
+</div>

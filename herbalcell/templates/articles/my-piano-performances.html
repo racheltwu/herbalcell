@@ -1,0 +1,21 @@
+{% extends '360_player_base.html' %}
+
+{% block title %}My piano performances{% endblock %}
+
+{% block article_content %}
+
+<p>Starting from Link to the Past Credits, these were recorded on my <a href="http://www.amazon.com/gp/product/B002IVI970/ref=as_li_ss_tl?ie=UTF8&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B002IVI970&amp;linkCode=as2&amp;tag=herbalcell-20">Casio Privia PX-330</a>, which I love! Sheik's Theme and older were recorded on a Kawai PN80 digital piano. Prelude of Light was recorded with my <a href="http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2Fgp%2Fproduct%2FB001FSJC14&amp;tag=herbalcell-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325">cheaper Casio keyboard</a>. You can see how I record them <a href="{% url 'article' 'how-i-play-and-record-piano' %}" title="How I play and record piano">here</a>.</p>
+
+<div id="performances" class="group-of-items">
+{% for performance in performances %}
+    <h2>{{ performance.title }}</h2>
+    <div class="group-item">
+        <div class="ui360">
+            <a href="{{ STATIC_URL }}performances/{{ performance.filename }}.mp3">Mp3</a>
+            {% if performance.video_url %}, <a href="{{ performance.video_url }}" title="{{ performance.title }} Piano MP3">Video</a>{% endif %}
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}

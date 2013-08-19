@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>herbalcell | {% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link type="text/css" rel="stylesheet" media="screen" href="{{ STATIC_URL }}css/style.css" />
+    <!--[if lte IE 8]> <style> body { background-repeat: repeat; } .mobile-tabs { margin-bottom: 1px; } </style> <![endif]-->
+	<link type="text/css" rel="stylesheet" media="screen" href="{{ STATIC_URL }}js/fancybox/jquery.fancybox-1.3.4.css" />
+    {% block head_css %}{% endblock %}
+	<script type="text/javascript" src="{{ STATIC_URL }}js/respond.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-migrate.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/utils.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/fancybox/jquery.fancybox-1.3.4.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/fancybox/initialize.js"></script>
+    {% block head_js %}{% endblock %}
+    {% include 'fragments/google-analytics.html' %}
+    <script type="text/javascript">
+        $(function() {
+            selectRandomBackground();
+            scrollFollow();
+            sidebarSort();
+            mobileTabs();
+        });
+    </script>
+</head>
+
+<body>
+    <div><img class="background" src="" alt="Background Image" /></div>
+    <div id="head">
+        <a href="/"><img src="{{ STATIC_URL }}images/site-design/logo.png" alt="Herbalcell Logo" /></a>
+    </div>
+    <div id="horizontal-ad">
+        {% include 'fragments/google-ad-horizontal.html' %}
+    </div>
+    <div id="content-ads-foot">
+        <div class="mobile-tabs">
+            <div class="tab-wrap tab-left selected" rel="article-content">
+                <div class="tab-slant">&nbsp;</div>
+                <div class="tab">Main</div>
+            </div>
+            <div class="tab-wrap tab-right" rel="sidebar-navigation">
+                <div class="tab-slant">&nbsp;</div>
+                <div class="tab">Nav</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="sidebar-ads" id="sidebar-ads-left-wrap"><div id="sidebar-ads-left" class="scroll-follow">&nbsp;
+            {% include 'fragments/google-ad.html' %}
+        </div></div>
+        <div id="content-foot">
+            <div id="content">
+                <div id="sidebar-navigation">
+                    {% include 'fragments/donate-button.html' %}
+                    <a href="{% url 'about_me' %}" title="About me">About me!</a>
+                    <div id="social-network-links">
+                        <a href="http://www.youtube.com/h2g2" title="Herbalcell on YouTube"><img src="{{ STATIC_URL }}images/social-network-icons/minimalist/youtube.png" alt="YouTube" /></a>
+                        <a href="https://www.facebook.com/herbalcellsheetmusic" title="Herbalcell Facebook page"><img src="{{ STATIC_URL }}images/social-network-icons/minimalist/fb_1.png" alt="Facebook" /></a>
+                        <a href="http://herbalcell.deviantart.com/gallery" title="Herbalcell on DeviantArt"><img src="{{ STATIC_URL }}images/social-network-icons/minimalist/deviant_art.png" alt="DeviantArt" /></a>
+                        <a href="mailto:herbalcell@gmail.com" title="Email Herbalcell"><img src="{{ STATIC_URL }}images/social-network-icons/minimalist/email.png" alt="Email" /></a>
+                    </div>
+                    <h2>Articles</h2>
+                    <div class="sort-links">
+                        Sort: <a class="selected" id="sort-by-popularity">Popular </a> | <a id="sort-by-date">Recent</a>
+                    </div>
+                    <div class="sorted-div sort-by-popularity">
+                    {% for article in articles_by_popularity %}
+                        <a href="{% url 'article' article.filename %}" title="{{ article.title }}">{{ article.title }}</a>
+                    {% endfor %}
+                    </div>
+                    <div class="sorted-div sort-by-date">
+                    {% for article in articles_by_date %}
+                        <a href="{% url 'article' article.filename %}" title="{{ article.title }}">{{ article.title }}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div id="article-content">
+                    {% if not article.is_static %}
+                        <div class="date">
+                            <div class="month">{{ article.created_on|date:"M" }}</div>
+                            <div class="day">{{ article.created_on|date:"j" }}</div>
+                            <div class="year">{{ article.created_on|date:"Y" }}</div>
+                        </div>
+                    {% endif %}
+                    {% if article %}<h1><a href="{% url 'article' article.filename %}">{{ article.title }}</a></h1>{% endif %}
+                    {% block article_content %}{% endblock %}
+                    {% if article %}
+                    <div class="pagination">
+                        {% if article.newer_article %}
+                            <a class="newer" href="{% url 'article' article.newer_article.filename %}">Newer</a>
+                        {% endif %}
+                        <span class="current-page">{{ article.index }} of {{ articles_by_popularity.count }}</span>
+                        {% if article.older_article %}
+                            <a class="older" href="{% url 'article' article.older_article.filename %}">Older</a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                <br class="clear" />
+            </div>
+            <div id="foot">
+                Content on this website <a href="http://en.wikipedia.org/wiki/Copyleft">copyleft</a> Rachel Bell. Use however you want. Credit would be nice.<br />
+                Question? Comment? Broken link? Let me know - <strong>herbalcell@gmail.com</strong>.
+            </div>
+        </div>
+        <div class="sidebar-ads" id="sidebar-ads-right-wrap"><div id="sidebar-ads-right" class="scroll-follow">
+            {% include 'fragments/google-ad.html' %}
+        </div></div>
+        <br class="clear" />
+    </div>
+</body>
+</html>

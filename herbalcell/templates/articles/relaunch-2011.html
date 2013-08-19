@@ -1,0 +1,21 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}Relaunch 2011!{% endblock %}
+
+{% block date %}2011-06-01{% endblock %}
+
+{% block article_content %}
+
+<img src="{{ STATIC_URL }}images/misc/fireworks.jpg" title="Relaunch 2011" alt="Relaunch 2011" class="float-right" />
+
+<p>I've been secretly toiling away redoing my website in the Python programming language using the Django framework after gaining some pretty thorough experience in the two on other projects. I started my first day-job in November 2010, where we use those technologies. I greatly prefer using them over awful PHP for web development. It allows me to create very clean-coded websites very quickly and headache-free. I also enjoy using Python as a general scripting language, and will eventually use it in game development too using the Panda3D game engine when I get around to that someday.</p>
+
+<p>While I was at it, I decided to give herbalcell a fresh new look. I needed to design a logo, and decided that it should look herbal. I looked at various images of herbs and found one I liked. I converted it into a vector using Inkscape (a free vector image program). To do this, go to Path > Trace Bitmap. I'm really happy with the way it turned out, and now it feels like my website has a brand.</p>
+
+<p>I also used this opportunity to switch to CSS3 techniques like rounded corners, box and text shadows. Man does that make web-design simpler! It's nice being able to add nice features like that so quickly and simply, while feeling satisfied that if someone doesn't have a modern enough browser (or IE) to see those features, it will still look acceptable enough for them, just not as pretty. And that's their own fault, of course. ;)</p>
+
+<p>I also decided to use font embedding to not be restricted to the annoyingly small group of web-safe fonts. You can read about the process I used in detail <a href="{% url 'article' 'how-to-embed-fonts-in-your-website' %}">here</a>.</p>
+
+<p>Another big reason I wanted to redesign my site was to change the main focus to my various portfolios, with a separate blog section for articles. It feels more professional now, which is what I wanted. I'm all growed up now. :P I also added some cool new blog features like listing the articles by popularity and by date.</p>
+
+{% endblock %}

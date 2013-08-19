@@ -1,0 +1,23 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}Layering and overlapping bump maps with Blender tutorial{% endblock %}
+
+{% block date %}2008-09-30{% endblock %}
+
+{% block article_content %}
+
+<p>To layer bump maps in Blender without having their values mix together requires the use of a stencil.</p>
+
+<p>As an example, say you wanted to have a plane covered with small bumps first and then large bumps over that. First add <a href="{{ STATIC_URL }}images/blender-tutorials/bump.png">this texture</a>, map it to normal (click "Nor" twice or the dots will be caving in; Blender is backwards for some reason), and set the size to about 12 or so to make the bumps small. Change the normal slider to about 6 to make the bumps stick out further. Copy this texture with the little up arrow next to the texture channels, and paste it on the empty channel below it with the down arrow. Change the size on this one to about 3 to make these bumps large. Render this, and you will see the problem.</p>
+
+<img src="{{ STATIC_URL }}images/blender-tutorials/bumps-mix-problem.jpg" title="Bump maps mix Blender" alt="" />
+
+<br /> <br />
+
+<p>When you layer textures in Blender, the bottom-most or most recently added texture is the one that shows, unless there is transparency in the texture which would allow the texture below to peek through. But bump maps do not allow transparency, only black and white values. Any transparency in a bump map gets translated into full black. So you would expect the most recently added bump texture (the large bumps) to be the only one showing, which isn't what we want, but you would expect that to happen. But for some reason, the bump textures actually mix instead. So to get the bump maps to work like we want, you must use a stencil.</p>
+
+<p>A stencil is just an image that is added as a texture which tells all the following textures not to map to the black areas of the stencil. When you think about it, we want the little bumps to NOT show up on top of the big bumps. So change the order of the textures to have the large bumps first, then a space for the stencil, then the small bumps. To do that, copy the first channel to the third channel, then copy the second channel to the first channel. In the middle channel, unselect "Nor" in "map to" and select "stencil" and "RGB" here. Don't forget to click RGB because the stencil won't work otherwise. Go the textures menu where you change the image (F6) and make this texture a single user copy by clicking the little 3 next to the texture name. If you don't do this, all three textures will be sharing the same image since we copied and pasted them. Since we want the middle channel to have a different image, we make it a single user copy. Use <a href="{{ STATIC_URL }}images/blender-tutorials/stencil.png">this image</a> for the middle texture channel. Render again and you should get something like below.</p>
+
+<img src="{{ STATIC_URL }}images/blender-tutorials/bumps-overlap-solution.jpg" title="Bump maps overlap Blender" alt="" />
+
+{% endblock %}

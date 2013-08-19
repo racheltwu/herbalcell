@@ -1,0 +1,37 @@
+{% extends 'blog_base.html' %}
+{% load custom_tags %}
+
+{% block title %}3D modeling and animation{% endblock %}
+
+{% block date %}2008-10-31{% endblock %}
+
+{% block article_content %}
+
+<img src="{{ STATIC_URL }}images/misc/blender-logo.jpg" title="Blender Logo" alt="Blender Logo" class="float-left" />
+<p>I am an avid user of <a href="http://www.blender.org/download/get-blender/" title="Download Blender">Blender</a>, an open-source, free 3D modeling and animation program. Blender is powerful 3D software. Just <a href="http://www.blender.org/features-gallery/gallery/art-gallery/" title="Blender Gallery">look at what people are doing with it</a>. Open-source means that the source code is openly available to the public, which means anyone can edit or improve it, and there are a lot of people who work very hard making Blender what it is. Blender already has an incredibly rich set of <a href="http://www.blender.org/features-gallery/features/" title="Blender Features">features</a>, and new versions are generally released every 6 months, which include bug-fixes and new features.</p>
+
+<p>I started out in 3D using Blender, and became accustomed to its fast, efficient workflow which makes use of a lot of keyboard shortcuts. I use keyboard shortcuts in every application I use anyway, so having them in Blender just made sense to me. The mouse should only have to be used when absolutely necessary, because it is a much slower method of input.</p>
+
+{% fancybox 'tp-link-model.jpg' 'My render of Link from Twilight Princess' 'group' %}
+
+<p>When I found out someone <a href="http://www.zeldacapital.com/3d.php" title="Twilight Princess model rip">ripped some Twilight Princess models</a> from the Gamecube disc, I started playing with the Link model. I cleaned it up, removed double vertices, fixed textures, rigged him with bones so he is poseable, and I just finished completing a walk cycle for him, which I might post a video of soon.</p>
+
+{% fancybox 'tp-midna-model.jpg' 'My render of Midna from Twilight Princess' 'group' 'float-left' %}
+
+<p>I also started work on Midna. Her textures took a bit more work to get them looking right, but I think it turned out well. I just finished rigging her, but haven't animated anything with her yet.</p>
+
+<p>If you want to import the models from the pack into Blender, just go to <strong>File > Import > 3D Studio</strong>.</p>
+
+{% fancybox 'apples.jpg' 'My render of a bowl of apples' 'group' %}
+
+<p>I modeled this bowl of apples pretty quickly, and I think it turned out really nice. The textures on the apples are all procedural. I initially wanted to model it so I could use Blenders physics system to have them fall into place in the bowl, which took a while to figure out how to do, and still involved tweaking the objects by hand afterward. I could have much more easily just placed them in the bowl by hand from the start and been done in an hour total. Using the physics system would be worth it if the object was smaller (say, a jelly bean) and there were going to be a lot of them in a container. The physics doodling made the whole thing about 3 hours. You can get my blend file <a href="{{ STATIC_URL }}blender/apples.blend" title="Bowl of apples blend file">here</a>.</p>
+
+{% fancybox 'corndogs.jpg' 'My render of some corndogs' 'group' 'float-left' %}
+
+<p>A long time ago I made a corndog on accident when experimenting with the lathe tool, so recently I decided to improve it and put two on a plate with some mustard (I love mustard). I reused the table from my apples blend. You can get my blend file <a href="{{ STATIC_URL }}blender/corndogs.blend" title="Corndogs blend file">here</a>.</p>
+
+{% fancybox 'minimalist-room.jpg' 'Minimalist room I made in Blender' 'group' %}
+
+<p>This is a minimalist room I made for my <a href="{% url 'article' 'life-as-a-minimalist' %}" title="Minimalist page">minimalist page</a>. It took me a few days total, mostly tweaking the lighting. I also used a depth of focus blur using <a href="http://blenderartists.org/forum/showthread.php?t=126866&amp;" title="Depth of focus instructions">these simple instructions</a> to simulate the way a camera focuses to take a photo. The only Photoshopping I did was to select the window shape with a polygon lasso, fill it with white on a new layer, gaussian blur it, and reduce the opacity to create a glowing effect. I got the floor and wall textures from <a href="http://cgtextures.com/" title="CG textures">this website</a>, which is where I get all my textures, even though I have to edit them to make them tileable. You can get my blend file <a href="{{ STATIC_URL }}blender/minimalist-room.blend" title="Minimalist room blend file">here</a>.</p>
+
+{% endblock %}

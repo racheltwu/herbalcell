@@ -1,0 +1,43 @@
+{% extends 'blog_base.html' %}
+
+{% block title %}How to hack your Motorola cell phone{% endblock %}
+
+{% block date %}2009-01-23{% endblock %}
+
+{% block article_content %}
+
+<img src="{{ STATIC_URL }}images/misc/ringtone.jpg" alt="Cellphone ringtone" title="Cellphone ringtone" class="float-right" />
+
+<p>I use Verizon for my phone service, and while they have a large coverage area, they also tend to cripple the functionality of their phones out of greed. They'd rather charge you fees for using simple features like transferring pictures or ringtones to and from your phone. Other cell phone companies do the same thing, but I've found a way to get around it. The following method applies to Motorola phones.</p>
+
+<h2>Step 1</h2>
+
+<p>Before you start, you need a way to connect your phone to your computer. Your phone probably has a <a href="http://en.wikipedia.org/wiki/Usb#USB_standard_connectors" title="USB types on Wikipedia">mini USB port</a>, so the easiest thing is to use a <a href="http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2FDigital-Camera-Cable-MINI-B-OLYMPUS%2Fdp%2FB000GBYVPI%3Fie%3DUTF8%26s%3Delectronics%26qid%3D1210445768%26sr%3D1-38&amp;tag=herbalcell-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325" title="Mini USB to USB cable on Amazon">mini USB to regular USB</a> cable to connect it via USB. Your phone might also have bluetooth so you could use your bluetooth enabled PC (if you have one) to connect it wirelessly.</p>
+
+<h2>Step 2</h2>
+
+<p>Download <a href="http://developer.motorola.com/docstools/USB_Drivers/Handset_USB_Driver" title="Motorola USB driver">this driver for your Motorola phone</a> (will require registering), and <a href="http://handheld.softpedia.com/get/Developer-Tools/File-Manager/P2kCommander-38120.shtml">P2k Commander</a>, a program that will allow you to read and write files to your phone.</p>
+
+<h2>Step 3</h2>
+
+<p>Install the "Handset USB driver", then connect your phone to your computer. Windows should recognize it and install it for you. Then look in your Device Manager under Modems and it should be listed there. If not, unplug and replug your phone in. Right click on the Motorola modem and click Properties. Under the Modem tab, find what COM port the modem is in (mine was COM4).</p>
+
+<h2>Step 4</h2>
+
+<p>Open "P2kCommander.exe" and go to Options and select "Use this COM port" and type in "COM#" with your COM port number. In the bottom left window, you want the message to appear "USB p2k device found, phone connected!" The messages "GENERIC FAILURE" and "Volume name fail!" are normal.</p>
+
+<h2>Step 5</h2>
+
+<p>In the right window, in the pull-down menu, select "/a P2k Phone System" and wait a moment while it loads the files from your phone. Explore the folders and find where your various things are stored. Exploring mine, I found everything under "a/brew/mod/" like my custom photos, the stock wallpapers, my custom sound-recordings, and ringtones. You can copy files over by selecting them on either side and clicking copy at the bottom. Watch the green progress bar, especially if you're transferring a large file, and make sure it finishes without errors. After it finishes, check the copied file size and make sure it is the same as the original.</p>
+
+<p>You can also delete existing files you don't want. To be safe, I copied over files from my phone to my computer before I deleted them from my phone, just in case. I deleted all the stock images and transferred custom images over to use as wallpaper, etc. Make sure you are using the same resolution ratio as the original photos or your phone might give you an error when trying to open it.</p>
+
+<p>I deleted all the existing ringtones and transferred custom ones over. To make ringtones work, you need to delete the database files that your phone made itemizing the ringtones in your phone, then restart your phone to have the database files re-created. In my phone, these were located under "a/TmpTneDB.db" and "a/MyToneDB.db". Hopefully that's where yours are too. ^__^ &nbsp; After deleting these two files, restart your phone and the ringtones should be there and working.</p>
+
+<h2>How do I make custom ringtones?</h2>
+
+<p>Any mp3, wav or midi file can be used as a ringtone. If you'd like to edit an mp3 or wav file a little, I highly recommend <a href="http://audacity.sourceforge.net/download/" title="Download Audacity">Audacity</a>, which is a free, open source audio editing software. It is full-featured audio editing software that I use for a lot more than just making ringtones.</p>
+
+<p>Install Audacity, and then open the mp3 you want to use as a ringtone. Select the portion that you want to use. It can be the whole song, or a portion of it. As a ringtone, it will be looping, so you  might take that into consideration. Copy it with CTRL+C, then open a new file with CTRL+N, then paste the portion with CTRL+V. To fade in or out, select the portion to fade and go to Effects > Fade In/Out. When finished, go to File, Export. Choose mp3 for the format, and then click Options. Here you can change the quality to lower the file size if desired. I saved my ringtones at 128kbps.</p>
+
+{% endblock %}
